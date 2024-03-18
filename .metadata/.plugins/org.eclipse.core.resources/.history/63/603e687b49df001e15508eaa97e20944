@@ -1,0 +1,103 @@
+package com.hyungju.service;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.ArrayList;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.hyungju.api.ServantInfo;
+import com.hyungju.mapper.FgoMapper;
+
+import lombok.extern.log4j.Log4j;
+
+@Log4j
+@Service
+//@AllArgsConstructor
+public class FgoServiceImpl implements FgoService{
+	
+	@Autowired
+	private FgoMapper mapper;
+	
+	
+	public ArrayList<ServantInfo> getServantData(ServantInfo className) throws IOException {
+		String apiUrl = "https://api.atlasacademy.io/basic/KR/servant/search?className="+className.getClassName();
+	try {
+		URL url = new URL(apiUrl);
+		HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+		connection.setRequestMethod("GET");
+		
+		int responseCode = connection.getResponseCode();
+		if(responseCode == HttpURLConnection.HTTP_OK) {
+			BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+			StringBuilder response = new StringBuilder();
+			String line;
+			while((line = reader.readLine()) != null) {
+				response.append(line);
+			}
+			reader.close();
+			
+			String jsonData = response.toString();
+			
+			Gson gson = new Gson();
+			
+			boolean ServantCheck = true;
+			JsonArray jsonArray = gson.fromJson(jsonData, JsonArray.class);
+			//JsonArray는 제이슨의 []를 List로 가져오는 명령어
+			ArrayList<ServantInfo> saberInfoList = new ArrayList<>();
+			for (int i = 0; i < jsonArray.size(); i++) {
+				JsonObject jsonObject = jsonArray.get(i).getAsJsonObject();
+				int id = jsonObject.get("id").getAsInt();
+				String name = jsonObject.get("name").getAsString();
+//				className = jsonObject.get("className").getAsString();
+				int rarity = jsonObject.get("rarity").getAsInt();
+				String face = jsonObject.get("face").getAsString();
+				info = new ServantInfo(id,name,rarity,face,className);
+//				if(mapper.DataCheck(id) == 1) {
+//					ServantCheck = false;
+//				} else {
+//					ServantCheck = true;
+//				}
+				mapper.SaveServantData(info);
+				saberInfoList.add(info);
+//				if(ServantCheck) {
+//				} else {
+//					System.out.println("제발 이러지마");
+//					
+//				}
+			}
+		
+			
+			for (ServantInfo saberInfo : saberInfoList) {
+                 System.out.println("ID: " + saberInfo.getId());
+                 System.out.println("Name: " + saberInfo.getName());
+                 System.out.println("Class Name: " + saberInfo.getClassName());
+                 System.out.println("rarity:"+saberInfo.getRarity());
+                 System.out.println("face:"+saberInfo.getFace());
+                 System.out.println();
+             }
+			 return saberInfoList;
+		
+		} else {
+			 System.out.println("Failed to fetch data from the URL. Response code: " + responseCode);
+		}
+		connection.disconnect();
+			
+
+	}catch(IOException e) {
+		e.printStackTrace();
+	}
+	return null;
+	
+	}
+	
+	
+
+}

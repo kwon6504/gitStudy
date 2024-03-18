@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hyungju.mapper.FgoMapper">
+	<insert id="SaveServantData" parameterType="com.hyungju.api.ServantInfo">
+		insert into servantlist (id,name,className,rarity,face) values 
+		(#{id},#{name},#{className},#{rarity},#{face})
+	</insert>
+	<select id="DataCheck" resultType="int">
+		select count(*) from servantlist where id like #{id}
+	</select>
+	<select id="getData" resultType="com.hyungju.api.ServantInfo">
+		select * from servantlist where className like #{className}
+	</select>
+</mapper>

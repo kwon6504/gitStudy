@@ -1,0 +1,24 @@
+package com.peisia.controller;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.peisia.service.FgoService;
+import com.peisia.service.FgoServiceImpl;
+
+import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j;
+
+@Log4j
+@RequestMapping("/fgo/*")
+@AllArgsConstructor
+public class FgoController {
+	
+	private FgoService service;
+	private FgoServiceImpl serviceImpl;
+	
+	@GetMapping(/servantList)
+	public void servantList() {
+		
+	}
+}

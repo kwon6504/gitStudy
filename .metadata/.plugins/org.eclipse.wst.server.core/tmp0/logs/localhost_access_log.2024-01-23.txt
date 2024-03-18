@@ -1,0 +1,7 @@
+127.0.0.1 - - [23/Jan/2024:14:12:13 +0900] "GET / HTTP/1.1" 404 807
+0:0:0:0:0:0:0:1 - - [23/Jan/2024:14:12:14 +0900] "GET /JspDaoDtoBoard/list.jsp HTTP/1.1" 200 202
+0:0:0:0:0:0:0:1 - - [23/Jan/2024:14:12:14 +0900] "GET /favicon.ico HTTP/1.1" 404 818
+0:0:0:0:0:0:0:1 - - [23/Jan/2024:16:40:08 +0900] "GET /JspDaoDtoBoard/list.jsp HTTP/1.1" 200 202
+0:0:0:0:0:0:0:1 - - [23/Jan/2024:16:40:10 +0900] "GET /JspDaoDtoBoard/write.jsp HTTP/1.1" 200 273
+0:0:0:0:0:0:0:1 - - [23/Jan/2024:16:40:12 +0900] "GET /JspDaoDtoBoard/write_proc.jsp?title=%E3%85%81%E3%84%B4%E3%85%87&id=%E3%85%81%E3%84%B4%E3%85%87&text=%E3%85%81%E3%84%B4%E3%85%87 HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [23/Jan/2024:16:40:12 +0900] "GET /JspDaoDtoBoard/list.jsp HTTP/1.1" 200 202

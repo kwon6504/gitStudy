@@ -1,0 +1,21 @@
+package com.peisia.dto;
+
+import lombok.Data;
+
+@Data
+public class Skills {
+	private int id;
+	private int num;
+	private String name;
+	private String detail;
+	private String icon;
+	
+	public Skills(int id, String name, String detail, String icon) {
+		this.id = id;
+		
+		this.name = name;
+		this.detail = detail;
+		this.icon = icon;
+	}
+	
+}

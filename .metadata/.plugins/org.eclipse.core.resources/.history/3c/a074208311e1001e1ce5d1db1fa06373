@@ -1,0 +1,75 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="cp" value="${pageContext.request.contextPath}" />
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<link rel="stylesheet" href="${cp}/resources/Fgo.css">
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<style>
+.left {
+	text-align: left; /* 텍스트를 왼쪽 정렬 */
+}
+
+.skills-info {
+	display: inline-block; /* 가로로 나열하기 위해 인라인 블록 요소로 설정 */
+	text-align: center; /* 텍스트를 가운데 정렬 */
+	margin: 10px; /* 각 서번트 정보 사이의 간격 설정 */
+}
+</style>
+<body>
+	<fieldset>
+		<legend class="left">
+			${status.name}
+		</legend>
+
+		<c:forEach var="skill" items="${status.skills}">
+			<div class="skills-info">
+				<c:if test="${skill.priority == 1}">
+				<img alt="스킬아이콘" src="${skill.icon}"> <br> ${skill.name}
+				</c:if>
+				<br>
+			</div>
+		</c:forEach>
+		<%-- <img alt="스킬아이콘" src="${status.skills.get(0).icon}">
+<br>
+${status.skills.get(0).name} 
+<img alt="스킬아이콘" src="${status.skills.get(1).icon}">
+<br>
+${status.skills.get(1).name} 
+<img alt="스킬아이콘" src="${status.skills.get(2).icon}">
+<br>
+${status.skills.get(2).name} --%>
+
+	</fieldset>
+	<script>
+	$(function() {						
+		$(".skills-info").click(function() {					
+			// todo: 컨텍스트 패스에 맞춰 수정할 것				
+			$.get("/fgo/Status", function(data) { 				
+				// * 주의 * 기존 xhr.open.. 식에서 jquery $.get 				
+				// 문법으로 바꾼 경우 이 코드 처리를 해야 에러가 안남.				
+				// var x = JSON.stringify(data);				
+				if (xhr.status === 200) { // 응답 상태 확인			
+					$(".skills-info").text('${status.skills[0].detail}');  // data.skill.detail로 수정
+					console.log(${'status.skills[0].detail}');	
+				} else {			
+					console.error(xhr.statusText); // 오류 메시지 출력		
+				}	
+			});				
+		});					
+	});			 
+	
+
+
+</script>
+
+
+
+</body>
+</html>

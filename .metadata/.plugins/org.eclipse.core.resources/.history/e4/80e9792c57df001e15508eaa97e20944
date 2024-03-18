@@ -1,0 +1,13 @@
+package com.peisia.dto;
+
+import lombok.Data;
+
+@Data
+public class FgoDto {
+	
+	public String collectionNo;
+	public String name;
+	public String className;
+	public int rarity;
+	
+}

@@ -1,0 +1,9 @@
+package com.peisia.service;
+
+import org.springframework.stereotype.Service;
+
+import com.peisia.dto.FgoDto;
+@Service
+public interface FgoService {
+
+}

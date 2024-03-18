@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete element from project &apos;JspDaoDtoBoard_v21&apos;&#x0D;&#x0A;- Original project: &apos;JspDaoDtoBoard_v21&apos;&#x0D;&#x0A;- Original element: &apos;com.peisia.Board.java&apos;" description="Delete element" element1="/src\/main\/java&lt;com.peisia{Board.java" elements="1" flags="589830" id="org.eclipse.jdt.ui.delete" resources="0" stamp="1707198259372" subPackages="false" version="1.0"/>
+</session>

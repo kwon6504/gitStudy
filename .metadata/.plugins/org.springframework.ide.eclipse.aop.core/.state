@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aop-reference-model>
+<aop-project name="MapleBoard_v1"/>
+<aop-project name="Mi"/>
+<aop-project name="Mi2"/>
+<aop-project name="Spring_Board"/>
+<aop-project name="Ajax"/>
+<aop-project name="FgoBoardMy"/>
+<aop-project name="MiOriginal"/>
+<aop-project name="Miv2"/>
+<aop-project name="MiTest"/>
+<aop-project name="FGOBorad"/>
+</aop-reference-model>

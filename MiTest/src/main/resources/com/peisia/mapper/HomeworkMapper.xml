@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.peisia.mapper.HomeworkMapper">
+	<select id="SpringPracticeSelect">
+		select * from springHomework;
+	</select>
+	<update id="SpringPracticeUpdate" parameterType="com.peisia.spring.dto.HomeworkDto">
+		update springHomework set h_text = #{h_text} where h_no = #{h_no};
+	</update>
+	<delete id="SpringPracticeDelete" parameterType="com.peisia.spring.dto.HomeworkDto">
+		delete from springHomework where h_no = #{h_no} and h_text=#{h_text};
+	</delete>
+	<update id="updateVisitCount">
+		update visitCountHomework set count = count+1 where no = 1;
+	</update>
+	<select id="selectVisitCount" resultType="com.peisia.spring.dto.HomeworkDto">
+		select no,count from visitCountHomework where no = 1;
+	</select>
+</mapper>

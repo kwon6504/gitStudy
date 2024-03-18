@@ -1,0 +1,23 @@
+package com.peisia.service;
+
+import java.io.IOException;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.peisia.dto.FgoDto;
+
+import lombok.extern.log4j.Log4j;
+
+@Log4j
+@Service
+public class FgoServiceImpl {
+	public List<FgoDto> getServantData(String className) throws IOException{
+		FgoDto info = new FgoDto(0,"","","",0);
+		String apiUrl = "https://api.atlasacademy.io/basic/KR/servant/search?className="+className;
+		try {
+			
+		} catch(IOException e)
+		return null;
+	}
+}

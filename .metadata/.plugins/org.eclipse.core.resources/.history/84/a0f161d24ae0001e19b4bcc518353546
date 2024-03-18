@@ -1,0 +1,7 @@
+package com.peisia.dto;
+
+public class Skills {
+	public int id;
+	public String name;
+	public String detail
+}

@@ -1,0 +1,72 @@
+package com.peisia.service;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.ArrayList;
+
+import org.springframework.stereotype.Service;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.peisia.dto.FgoDto;
+
+import lombok.extern.log4j.Log4j;
+
+@Log4j
+@Service
+public class FgoServiceImpl {
+	public void getServantData(String className) throws IOException {
+		FgoDto info = new FgoDto(0, "", "", "", 0);
+		String apiUrl = "https://api.atlasacademy.io/basic/KR/servant/search?className=" + className;
+		try {
+			URL url = new URL(apiUrl);
+			HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+			connection.setRequestMethod("GET");
+			int responseCode = connection.getResponseCode();
+
+			if (responseCode == HttpURLConnection.HTTP_OK) {
+				BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+				StringBuilder response = new StringBuilder();
+				String line;
+				while ((line = reader.readLine()) != null) {
+					response.append(line);
+				}
+				reader.close();
+
+				String jsonData = response.toString();
+				// Gson 객체를 생성합니다. 이 객체는 JSON 데이터와 Java 객체 간 변환을 담당합니다.
+				Gson gson = new Gson();
+				// 메서드를 사용하여 JSON 문자열(jsonData)을 Java 객체로 변환합니다.
+				// 이 때, JsonArray.class는 JSON 배열을 나타내는 클래스로, fromJson 메서드는 주어진 JSON 문자열을 해당 클래스의
+				// 객체로 변환합니다.
+				JsonArray jsonArray = gson.fromJson(jsonData, JsonArray.class);
+				ArrayList<FgoDto> InfoList = new ArrayList<>();
+				// JSON 배열을 순회하면서 ServantInfo 객체 생성
+				for (int i = 0; i < jsonArray.size(); i++) {
+					JsonObject jsonObject = jsonArray.get(i).getAsJsonObject();
+					int id = jsonObject.get("id").getAsInt();
+					String face = jsonObject.get("face").getAsString();
+					String name = jsonObject.get("name").getAsString();
+					int rarity = jsonObject.get("rarity").getAsInt();
+					info = new FgoDto(id, face, name, className, rarity);
+					InfoList.add(info);
+				}
+
+				// 콘솔 확인용
+				for (FgoDto servantInfo : InfoList) {
+					System.out.println("ID: " + saberInfo.getId());
+					System.out.println("Name: " + saberInfo.getName());
+					System.out.println("Class Name: " + saberInfo.getClassName());
+					System.out.println("rarity:" + saberInfo.getRarity());
+					System.out.println("face:" + saberInfo.getFace());
+				}
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+}

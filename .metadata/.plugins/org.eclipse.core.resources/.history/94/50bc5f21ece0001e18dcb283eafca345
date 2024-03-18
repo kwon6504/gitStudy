@@ -1,0 +1,9 @@
+package com.peisia.dto;
+
+import java.util.ArrayList;
+
+import lombok.Data;
+@Data
+public class SkillsInfo {
+	public ArrayList<Skills> skills;
+}

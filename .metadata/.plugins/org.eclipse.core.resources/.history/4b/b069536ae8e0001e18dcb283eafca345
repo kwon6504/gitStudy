@@ -1,0 +1,24 @@
+package com.peisia.dto;
+
+import java.util.ArrayList;
+
+import lombok.Data;
+
+@Data
+public class Skills {
+	private ArrayList<Skills> skills;
+	private int id;
+	private int num;
+	private String name;
+	private String detail;
+	private String icon;
+	
+	public Skills(int id, int num, String name, String detail, String icon) {
+		this.id = id;
+		this.num = num;
+		this.name = name;
+		this.detail = detail;
+		this.icon = icon;
+	}
+	
+}

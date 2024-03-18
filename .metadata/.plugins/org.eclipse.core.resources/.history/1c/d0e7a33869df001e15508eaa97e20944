@@ -1,0 +1,46 @@
+package com.peisia.service;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.google.gson.Gson;
+import com.peisia.dto.FgoDto;
+
+import lombok.extern.log4j.Log4j;
+
+@Log4j
+@Service
+public class FgoServiceImpl {
+	public List<FgoDto> getServantData(String className) throws IOException{
+		FgoDto info = new FgoDto(0,"","","",0);
+		String apiUrl = "https://api.atlasacademy.io/basic/KR/servant/search?className="+className;
+		try {
+			URL url = new URL(apiUrl);
+			HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+			connection.setRequestMethod("GET");
+			
+			int responseCode = connection.getResponseCode();
+			if(responseCode == HttpURLConnection.HTTP_OK) {
+				BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+				StringBuilder response = new StringBuilder();
+				String line;
+				while((line = reader.readLine()) != null) {
+					response.append(line);
+				}
+				reader.close();
+				
+				String jsonData = response.toString();
+				
+				Gson gson = new Gson();
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+}

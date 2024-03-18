@@ -1,0 +1,71 @@
+#main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 800px;
+    height: 500px;
+    margin: auto;
+}
+
+#eqip {
+    width: 66%;
+    height: 66%;
+    margin-top: auto;
+    display: flex;
+    background-color: wheat;
+}
+
+.pet-line {
+    margin-top: auto;
+    display: flex;
+    justify-content: flex-end; /* 우측 정렬 */
+}
+
+#petline_1,
+#petline_2,
+#petline_3 {
+    margin-top: auto;
+    display: flex;
+    width: 33%;
+    height: 66%;
+    gap: 2px;
+}
+
+#pet {
+    width: 66%;
+    height: 33%;
+    margin-top: auto;
+    display: flex;
+    background-color: aquamarine;
+}
+
+.item {
+    width: 48px;
+    height: 48px;
+    background-color: lightgray;
+    border: 1px solid gray;
+}
+.itemimg {
+    width: 48px;
+    height: 48px;
+}
+
+.item-line {
+    width: 258px; /* 수정된 크기 */
+    height: 300px;
+    display: flex;
+}
+
+/* 새로 추가된 스타일 */
+.item-line {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
+}
+.block{
+    width: 48px;
+    height: 48px;
+    background-color: wheat;
+    border: 1px solid wheat;
+}
+ 

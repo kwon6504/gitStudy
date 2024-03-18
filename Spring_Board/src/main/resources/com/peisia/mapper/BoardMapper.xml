@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.peisia.mapper.BoardMapper">
+
+	<!-- 글 목록 -->
+	<select id="getList" resultType="com.peisia.dto.BoardDto">
+		select * from springBoard limit #{limitIndex},5
+	</select>
+	
+	<!-- 글 검색 -->
+	<select id="searchList" resultType="com.peisia.dto.BoardDto">
+	select * from springBoard where title like CONCAT ('%',#{word},'%') limit #{limitIndex},5
+	</select>
+	
+	<!-- 게시글 총 수 -->
+	<select id="listCount" resultType="int">
+	select count(*) from springBoard
+	</select>
+	
+	<!-- 검색한 게시글 총 수 -->
+	<select id="searchListCount">
+	select count(*) from springBoard where title like CONCAT ('%',#{word},'%') limit #{limitIndex},5
+	</select>
+
+	<!-- 글 쓰기 -->
+	<insert id="write">
+		insert into springBoard(title, id, text)
+		values(#{title}, #{id}, #{text})
+	</insert>
+
+	<!-- 글 읽기 -->
+	<select id="read" resultType="com.peisia.dto.BoardDto">
+		select * from springBoard where
+		no=#{no}
+	</select>
+
+	<!-- 글 삭제 -->
+	<delete id="del">
+		delete from springBoard where no=#{no}
+	</delete>
+
+	<!-- 글 수정 -->
+	<update id="modify">
+		update springBoard set title=#{title}, id=#{id}, text=#{text} where no=#{no}
+	</update>
+</mapper>

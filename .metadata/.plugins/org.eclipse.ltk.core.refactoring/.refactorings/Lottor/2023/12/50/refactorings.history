@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;com.peisia.c.Lottor1.Lottor&apos; to &apos;Lotto&apos;&#x0D;&#x0A;- Original project: &apos;Lottor&apos;&#x0D;&#x0A;- Original element: &apos;com.peisia.c.Lottor1.Lottor&apos;&#x0D;&#x0A;- Renamed element: &apos;com.peisia.c.Lottor1.Lotto&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;Lottor&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;com.peisia.c.Lottor1{Lottor.java[Lottor" matchStrategy="1" name="Lotto" qualified="false" references="true" similarDeclarations="false" stamp="1702533999866" textual="false" version="1.0"/>
+</session>

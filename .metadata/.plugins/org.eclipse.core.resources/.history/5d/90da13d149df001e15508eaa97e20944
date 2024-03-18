@@ -1,0 +1,14 @@
+package com.hyungju.api;
+
+import lombok.Data;
+
+@Data
+public class ServantInfo {
+	private int id;
+	private String name;
+	private String className;
+	private int rarity;
+	private String face;
+	}
+
+}

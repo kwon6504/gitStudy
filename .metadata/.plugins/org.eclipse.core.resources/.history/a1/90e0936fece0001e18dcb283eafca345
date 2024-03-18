@@ -1,0 +1,10 @@
+package com.peisia.dto;
+
+import java.util.List;
+
+import lombok.Data;
+@Data
+public class SkillsInfo {
+	public String id;
+	public List<Skills> skills;
+}

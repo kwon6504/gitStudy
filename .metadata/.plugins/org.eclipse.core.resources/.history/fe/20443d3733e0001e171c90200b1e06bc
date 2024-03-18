@@ -1,0 +1,10 @@
+package com.peisia.controller;
+
+import com.peisia.service.FgoService;
+import com.peisia.service.FgoServiceImpl;
+
+public class FgoController {
+	
+	private FgoService service;
+	private FgoServiceImpl serviceImpl;
+}

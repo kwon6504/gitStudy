@@ -1,0 +1,49 @@
+package com.peisia.controller;
+
+import java.io.UnsupportedEncodingException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.client.RestTemplate;
+
+import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j;
+
+@Log4j
+@RequestMapping("/fgo/*")
+@AllArgsConstructor
+@Controller
+public class FgoController {
+	
+	@GetMapping("/servant")
+	public String servant() {
+		String encodedName = null;
+		try {
+			encodedName = URLEncoder.encode("마슈",StandardCharsets.UTF_8.toString());
+		} catch (UnsupportedEncodingException e1) {
+			// TODO Auto-generated catch block
+			log.info("오류남 ㅋㄷ");
+			e1.printStackTrace();
+		}
+		String name= null;
+		String API_URL = "http://api.atlasacademy.io/basic/KR/servant/search?name="+name;
+		RestTemplate restTemplate = new RestTemplate();
+		log.info(API_URL);
+		URI uri = null;
+		try {
+			uri = new URI(API_URL);
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
+		}
+
+		String s = restTemplate.getForObject(uri, String.class); //	
+		log.info("======= 연결확인"+s);
+		return "redirect:/";
+	}
+}

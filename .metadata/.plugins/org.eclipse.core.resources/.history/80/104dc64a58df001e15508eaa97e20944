@@ -1,0 +1,16 @@
+package com.peisia.dto;
+
+import lombok.Data;
+
+@Data
+public class FgoDto {
+	private int id;
+	private String collectionNo;
+	private String name;
+	private String className;
+	private int rarity;
+
+	public FgoDto(int id, String collectionNo, String name, String className, int rarity) {
+		
+	}
+}

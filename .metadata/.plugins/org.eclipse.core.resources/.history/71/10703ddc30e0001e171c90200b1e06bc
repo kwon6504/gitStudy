@@ -1,0 +1,6 @@
+package com.peisia.dto;
+
+@Data
+public class FgoDto {
+
+}

@@ -1,0 +1,15 @@
+package com.peisia.service;
+
+import java.io.IOException;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+import lombok.extern.log4j.Log4j;
+
+@Log4j
+@Service
+public class FgoServiceImpl {
+	public List<FgoDto> getServantData(String className) throws IOException{
+		
+	}
+}
